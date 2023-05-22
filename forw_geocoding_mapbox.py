@@ -2,18 +2,22 @@ import requests
 from qgis.PyQt.QtCore import QVariant
 from qgis.core import QgsVectorLayer, QgsFeature, QgsGeometry
 
-# define the URL for the geocoding service (e.g. Nominatim, Google, or Mapbox).
-url = "https://api.mapbox.com/geocoding/v5/mapbox.places/"
-access_token = "&access_token=YOUR_API_KEY"
+# workflow
+# set path to file (.txt), one address each line and no blank lines
+# set optional mapbox parameters
+
+# define the file with the addresses to be geocoded
+address_file_path = "path to .txt file"
 
 # optional mapbox parameters
 language = "de"
 limit = "2"
 # types options are country, region, postcode, district, place, locality, neighborhood, address, and poi
-types = "adress"
+types = "address"
 
-# define the file with the addresses to be geocoded
-address_file_path = "path to .csv file"
+# define the URL for the geocoding service (e.g. Mapbox)
+url = https://api.mapbox.com/geocoding/v5/mapbox.places/
+access_token = "&access_token=YOUR_API_KEY"
 
 # empty list and layer for results 
 features = []
@@ -50,7 +54,7 @@ with open(address_file_path, "r") as f:
             tr = QgsCoordinateTransform(sourceCrs, destCrs, QgsProject.instance())
             
             point = QgsGeometry.fromPointXY(tr.transform(QgsPointXY(float(lat), float(lon))))
-            # creates a feature with adress attribute
+            # creates a feature with adsress attribute
             feature = QgsFeature()
             feature.setGeometry(point)
             feature.setAttributes([line, data['features'][0]['place_name']])
