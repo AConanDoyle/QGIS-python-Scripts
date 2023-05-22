@@ -1,4 +1,4 @@
-# QGIS-python-Scripts
+# QGIS-python-scripts
 
 A collection of different python scripts for QGIS.
 
